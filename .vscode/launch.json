@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "name": "(gdb) Iniciar",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "Escriba el nombre del programa; por ejemplo, ${workspaceFolder}/a.exe.",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/Users/juanp/Desktop/winlibs-x86_64-posix-seh-gcc-14.2.0-mingw-w64msvcrt-12.0.0-r3.zip/mingw64/bin",
+      "setupCommands": [
+        {
+          "description": "Habilitar la impresión con sangría para gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        },
+        {
+          "description": "Establecer tipo de desensamblado en Intel",
+          "text": "-gdb-set disassembly-flavor intel",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ],
+  "version": "2.0.0"
+}
