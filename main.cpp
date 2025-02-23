@@ -2,7 +2,8 @@
 #include <iostream>
 
 DWORD startTime = 0;
-
+DWORD endTime = 0;
+const int SEMICOLON_KEY = VK_OEM_1;
 class Shortcut
 {
 private:
@@ -22,17 +23,17 @@ LRESULT CALLBACK LowLevelKeysboardProc(int nCode, WPARAM wParam, LPARAM lParam)
         KBDLLHOOKSTRUCT *pKeyInfo = (KBDLLHOOKSTRUCT *)lParam;
 
         // Verifica si se presionó la tecla ';' (VK_OEM_1)
-        if (wParam == WM_KEYDOWN && pKeyInfo->vkCode == VK_OEM_1)
+        if (wParam == WM_KEYDOWN && pKeyInfo->vkCode == SEMICOLON_KEY)
         {
-            // if (wParam == WM_KEYUP ==)
+            // if (wParam == WM_KEYUP == )
+            // Verifica si se presionó la tecla 'a'
+            if (wParam == WM_KEYDOWN && pKeyInfo->vkCode == 'A')
+            {
+                keybd_event(VK_LEFT, 0, 0, 0); // Simula la flecha izquierda
+                return 1;                      // Bloquea la tecla original
+            }
             startTime = GetTickCount();
-            keybd_event(VK_LEFT, 0, 0, 0); // Simula la flecha izquierda
-            return 1;                      // Bloquea la tecla original
-        }
-
-        // Verifica si se presionó la tecla 'a'
-        if (wParam == WM_KEYDOWN && pKeyInfo->vkCode == 'A')
-        {
+            endTime = GetTickCount();
             keybd_event(VK_LEFT, 0, 0, 0); // Simula la flecha izquierda
             return 1;                      // Bloquea la tecla original
         }
